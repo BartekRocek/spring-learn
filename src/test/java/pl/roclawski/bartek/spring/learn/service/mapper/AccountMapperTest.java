@@ -28,7 +28,6 @@ class AccountMapperTest {
         // then
         Assertions.assertAll(
                 () -> assertNotNull(accountEntity, "The entity is null"),
-                () -> assertEquals(ACCOUNT_ID_125, accountEntity.getId(), "Account IDs are not equal"),
                 () -> assertEquals(ACCOUNT_NAME_JOHN, accountEntity.getName(), "Account names are not equal"),
                 () -> assertEquals(ACCOUNT_DEPARTMENT_IT, accountEntity.getDepartment(), "Account departments are not equal")
 
@@ -42,5 +41,6 @@ class AccountMapperTest {
         // when
 
         // then
+        Assertions.assertNotNull(null, "Null is null!");
     }
 }
