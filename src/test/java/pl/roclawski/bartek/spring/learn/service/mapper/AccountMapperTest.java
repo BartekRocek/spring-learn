@@ -34,4 +34,13 @@ class AccountMapperTest {
 
         );
     }
+
+    @Test
+    void fromReviewTest() {
+        // given
+
+        // when
+
+        // then
+    }
 }
