@@ -8,10 +8,10 @@
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pl.roclawski.bartek.spring.learn</groupId>
-	<artifactId>spring-learn</artifactId>
+	<groupId>pl.roclawski.bartek.spring.studies</groupId>
+	<artifactId>spring-studies</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-learn</name>
+	<name>spring-studies</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
