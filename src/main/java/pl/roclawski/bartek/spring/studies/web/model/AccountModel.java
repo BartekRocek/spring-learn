@@ -1,4 +1,4 @@
-package pl.roclawski.bartek.spring.learn.web.model;
+package pl.roclawski.bartek.spring.studies.web.model;
 
 public class AccountModel {
     private Long id;

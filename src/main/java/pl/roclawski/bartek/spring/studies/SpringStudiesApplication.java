@@ -1,13 +1,13 @@
-package pl.roclawski.bartek.spring.learn;
+package pl.roclawski.bartek.spring.studies;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringLearnApplication {
+public class SpringStudiesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringLearnApplication.class, args);
+		SpringApplication.run(SpringStudiesApplication.class, args);
 	}
 
 }

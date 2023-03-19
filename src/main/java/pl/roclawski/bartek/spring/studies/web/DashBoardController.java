@@ -1,9 +1,9 @@
-package pl.roclawski.bartek.spring.learn.web;
+package pl.roclawski.bartek.spring.studies.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.roclawski.bartek.spring.learn.service.DashBoardService;
+import pl.roclawski.bartek.spring.studies.service.DashBoardService;
 
 import java.util.logging.Logger;
 

@@ -1,22 +1,29 @@
-package pl.roclawski.bartek.spring.learn.service.mapper;
+package pl.roclawski.bartek.spring.studies.service.mapper;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pl.roclawski.bartek.spring.learn.repository.AccountEntity;
-import pl.roclawski.bartek.spring.learn.web.model.AccountModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import pl.roclawski.bartek.spring.studies.repository.AccountEntity;
+import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class AccountMapperTest {
+@SpringBootTest
+public class SpringAccountMapperTest {
 
     public static final String ACCOUNT_NAME_JOHN = "John";
     public static final String ACCOUNT_DEPARTMENT_IT = "IT";
     public static final long ACCOUNT_ID_125 = 125L;
 
+    @Autowired
+    private AccountMapper accountMapper;
+
     @Test
-    void from() {
+    void test() {
         // given
-        AccountMapper accountMapper = new AccountMapper();
+//        AccountMapper accountMapper = new AccountMapper();
         AccountModel accountModel = new AccountModel();
         accountModel.setId(ACCOUNT_ID_125);
         accountModel.setName(ACCOUNT_NAME_JOHN);
@@ -33,14 +40,7 @@ class AccountMapperTest {
                 () -> assertEquals(ACCOUNT_DEPARTMENT_IT, accountEntity.getDepartment(), "Account departments are not equal")
 
         );
+
     }
 
-    @Test
-    void fromReviewTest() {
-        // given
-
-        // when
-
-        // then
-    }
 }

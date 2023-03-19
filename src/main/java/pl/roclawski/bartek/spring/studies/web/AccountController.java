@@ -1,11 +1,11 @@
-package pl.roclawski.bartek.spring.learn.web;
+package pl.roclawski.bartek.spring.studies.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.roclawski.bartek.spring.learn.service.AccountService;
-import pl.roclawski.bartek.spring.learn.web.model.AccountModel;
+import pl.roclawski.bartek.spring.studies.service.AccountService;
+import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
 import java.util.logging.Logger;
 
