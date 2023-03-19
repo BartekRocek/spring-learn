@@ -1,4 +1,4 @@
-package pl.roclawski.bartek.spring.learn.service;
+package pl.roclawski.bartek.spring.studies.service;
 
 import org.springframework.stereotype.Service;
 

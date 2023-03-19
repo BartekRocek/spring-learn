@@ -1,12 +1,9 @@
-package pl.roclawski.bartek.spring.learn.service.mapper;
+package pl.roclawski.bartek.spring.studies.service.mapper;
 
-import org.hibernate.annotations.Comment;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import pl.roclawski.bartek.spring.learn.repository.AccountEntity;
-import pl.roclawski.bartek.spring.learn.repository.AccountRepository;
-import pl.roclawski.bartek.spring.learn.service.AccountService;
-import pl.roclawski.bartek.spring.learn.web.model.AccountModel;
+import pl.roclawski.bartek.spring.studies.repository.AccountEntity;
+import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
 import java.util.logging.Logger;
 

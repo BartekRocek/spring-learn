@@ -1,10 +1,10 @@
-package pl.roclawski.bartek.spring.learn.service;
+package pl.roclawski.bartek.spring.studies.service;
 
 import org.springframework.stereotype.Service;
-import pl.roclawski.bartek.spring.learn.repository.AccountEntity;
-import pl.roclawski.bartek.spring.learn.repository.AccountRepository;
-import pl.roclawski.bartek.spring.learn.service.mapper.AccountMapper;
-import pl.roclawski.bartek.spring.learn.web.model.AccountModel;
+import pl.roclawski.bartek.spring.studies.repository.AccountEntity;
+import pl.roclawski.bartek.spring.studies.repository.AccountRepository;
+import pl.roclawski.bartek.spring.studies.service.mapper.AccountMapper;
+import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
 import java.util.logging.Logger;
 

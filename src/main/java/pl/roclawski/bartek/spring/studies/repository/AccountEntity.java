@@ -1,4 +1,4 @@
-package pl.roclawski.bartek.spring.learn.repository;
+package pl.roclawski.bartek.spring.studies.repository;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
