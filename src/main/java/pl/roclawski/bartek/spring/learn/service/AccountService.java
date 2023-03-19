@@ -34,6 +34,7 @@ public class AccountService {
         AccountEntity savedAccountEntity = accountRepository.save(accountEntity);
         AccountModel mappedAccountModel = accountMapper.from(savedAccountEntity);
 
+        LOGGER.info("account(...) = " + mappedAccountModel);
         return mappedAccountModel;
     }
 }
