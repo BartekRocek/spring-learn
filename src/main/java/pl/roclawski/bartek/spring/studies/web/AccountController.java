@@ -3,12 +3,12 @@ package pl.roclawski.bartek.spring.studies.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.roclawski.bartek.spring.studies.service.AccountService;
 import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
@@ -23,21 +23,16 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    //    public String account(String name, String department) {
-    //        LOGGER.info("account(" + name + ", " + department + ")");
-//    @GetMapping // http://localhost:8080/accounts?name=John&department=Sales
-//    public String account(
-//            AccountModel accountModel, // dane przyjmowane z frontendu
-//                          ModelMap modelMap) { // dane przesyłane do frontendu
-//        LOGGER.info("account(" + accountModel + ")");
-//        accountService.account(accountModel);
-//        modelMap.addAttribute("account", accountModel); //przesyłanie do frontendu ??
-//        modelMap.addAttribute("hello", "hello world"); //przesyłanie do frontendu ??
-//
-//        return "account.html";
-//    }
-
     @GetMapping
+    public String listView(ModelMap modelMap) {
+        LOGGER.info("listView()");
+
+        List<AccountModel> accountModels = accountService.list();
+        modelMap.addAttribute("accounts", accountModels);
+        return "accounts";
+    }
+
+    @GetMapping(value = "/create")
     public String accountView() {
         LOGGER.info("accountView()");
 
@@ -48,7 +43,7 @@ public class AccountController {
     public String account(AccountModel accountModel) {
         LOGGER.info("account(" + accountModel + ")");
 
-        accountService.account(accountModel);
+        accountService.create(accountModel);
         return "account";
     }
 

@@ -5,34 +5,17 @@ import org.springframework.stereotype.Component;
 import pl.roclawski.bartek.spring.studies.repository.AccountEntity;
 import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
+import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Component
 public class AccountMapper {
 
     public static final Logger LOGGER = Logger.getLogger(AccountMapper.class.getName());
 
-//    private final AccountEntity accountEntity; // FIXME: 05.03.2023 which dependency to choose 
-
-//    private final AccountRepository accountRepository;
-
-//    public AccountMapper(AccountEntity accountEntity) {
-//        this.accountEntity = accountEntity;
-//    }
-
-//    public AccountMapper(AccountRepository accountRepository) {
-//        this.accountRepository = accountRepository;
-//    }
-
     public AccountEntity from(AccountModel accountModel) {
         LOGGER.info("from(" + accountModel + ")");
-
-//        String name = accountModel.getName();
-//        String department = accountModel.getDepartment();
-//
-//        AccountEntity accountEntity = new AccountEntity();
-//        accountEntity.setName(name);
-//        accountEntity.setDepartment(department);
 
         ModelMapper modelMapper = new ModelMapper();
         AccountEntity accountEntity = modelMapper.map(accountModel, AccountEntity.class);
@@ -44,13 +27,6 @@ public class AccountMapper {
     public AccountModel from(AccountEntity accountEntity) {
         LOGGER.info("from(" + accountEntity + ")");
 
-//        String name = accountEntity.getName();
-//        String department = accountEntity.getDepartment();
-//
-//        AccountModel accountModel = new AccountModel();
-//        accountModel.setName(name);
-//        accountModel.setDepartment(department);
-
         ModelMapper modelMapper = new ModelMapper();
         AccountModel accountModel = modelMapper.map(accountEntity, AccountModel.class);
 
@@ -58,16 +34,13 @@ public class AccountMapper {
         return accountModel;
     }
 
-    // TODO: 10.03.2023 Drugi from zmodyfikować z wykorzystaniem modelMapper
+    public List<AccountModel> transferListModelToListEntity(List<AccountEntity> accountEntities) {
+        LOGGER.info("transferListModelToListEntity(" + accountEntities + ")");
+
+        return accountEntities.stream()
+                .map(this::from)
+                .collect(Collectors.toList());
+
+    }
+
 }
-
-// TODO: 10.03.2023 Umieścić projekt na github
-//  dopisać testy jednostkowe dla AccountMapper, test dla czystej Javy, i dla Spring framework, tak jak w teście dla Repository
-//  zrobić dla wszystkich metod publicznych loggery na wejściu i wyjściu
-//  w POM zmienić learn na studies (1 commit) oraz pakiety (2 commit)
-
-// TODO: 03.03.2023 Dokończyć implementację metody from(), która przypisuje/mapuje
-//  pola z AccountModel na pola z AccountEntity, tak jak w metodzie account() w AccountService
-
-
-// TODO: 10.03.2023 https://modelmapper.org/getting-started/
