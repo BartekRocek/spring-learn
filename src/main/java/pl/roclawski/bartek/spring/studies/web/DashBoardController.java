@@ -27,3 +27,7 @@ public class DashBoardController {
         return "dashboard.html";
     }
 }
+
+// TODO: 24.03.2023 Zrobić pull request dla istniejących brachy
+//  Rozpropagować wuświetlanie listy elementów dla pozostałych controllerów
+//  Lista elementów pobierana z bazy danych

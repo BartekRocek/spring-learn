@@ -29,4 +29,4 @@ public class SignUpController {
         return "signup";
     }
 }
-// TODO: 20.03.2023 Rozpropoagować GET-POST na pozostałe controllery w połączeniu z formualrzem HTML 
+// TODO: 24.03.2023 Rozpropoagować GET-POST na pozostałe controllery w połączeniu z formualrzem HTML

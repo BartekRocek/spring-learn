@@ -44,6 +44,7 @@ public class AccountController {
         LOGGER.info("account(" + accountModel + ")");
 
         accountService.create(accountModel);
+
         return "account";
     }
 
