@@ -32,7 +32,7 @@ public class AccountController {
         modelMap.addAttribute("account", accountModel); //przesyłanie do frontendu ??
         modelMap.addAttribute("hello", "hello world"); //przesyłanie do frontendu ??
 
-        return "account.html";
+        return "account";
     }
 
 }
