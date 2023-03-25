@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import pl.roclawski.bartek.spring.studies.repository.AccountEntity;
 import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountMapperTest {
@@ -42,5 +45,25 @@ class AccountMapperTest {
         // when
 
         // then
+    }
+
+    @Test
+    void transferListModelToListEntity() {
+        // given
+        AccountMapper accountMapper = new AccountMapper();
+        List<AccountEntity> accountEntities = new ArrayList<>();
+
+        AccountEntity accountEntity = new AccountEntity();
+        accountEntity.setName("Ann");
+        accountEntity.setDepartment("IT");
+        accountEntities.add(accountEntity);
+
+        // when
+        List<AccountModel> accountModels = accountMapper.transferListModelToListEntity(accountEntities);
+
+        // then
+        Assertions.assertEquals(accountEntities.size(), accountModels.size(), "The lists are not of the same size");
+
+
     }
 }

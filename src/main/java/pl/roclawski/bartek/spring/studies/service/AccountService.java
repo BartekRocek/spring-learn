@@ -6,6 +6,7 @@ import pl.roclawski.bartek.spring.studies.repository.AccountRepository;
 import pl.roclawski.bartek.spring.studies.service.mapper.AccountMapper;
 import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @Service
@@ -21,8 +22,17 @@ public class AccountService {
         this.accountMapper = accountMapper;
     }
 
-    public AccountModel account(AccountModel accountModel) {
-        LOGGER.info("account(" + accountModel + ")");
+    public List<AccountModel> list() {
+        LOGGER.info("list()");
+        List<AccountEntity> accountEntities = accountRepository.findAll();
+
+        List<AccountModel> accountModels = accountMapper.transferListModelToListEntity(accountEntities);
+        LOGGER.info("list() = " + accountModels);
+        return accountModels;
+    }
+
+    public AccountModel create(AccountModel accountModel) {
+        LOGGER.info("create(" + accountModel + ")");
 //        String name = accountModel.getName();
 //        String department = accountModel.getDepartment();
 //
@@ -34,10 +44,13 @@ public class AccountService {
         AccountEntity savedAccountEntity = accountRepository.save(accountEntity);
         AccountModel mappedAccountModel = accountMapper.from(savedAccountEntity);
 
-        LOGGER.info("account(...) = " + mappedAccountModel);
+        LOGGER.info("create(...) = " + mappedAccountModel);
         return mappedAccountModel;
     }
 }
+
+// TODO: 24.03.2023 Zrobić test dla metody list() z AccountService
+
 
 // TODO: 24.02.2023 Napisać test jednostkowy dla AccountService
 //  Testowany serwis jest komponentem Springowym
