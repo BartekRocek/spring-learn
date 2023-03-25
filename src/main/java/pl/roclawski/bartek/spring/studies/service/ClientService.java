@@ -9,7 +9,7 @@ public class ClientService {
     public static final Logger LOGGER = Logger.getLogger(ClientService.class.getName());
 
     public void client() {
-        LOGGER.info("account() = ");
+        LOGGER.info("account()");
 
     }
 
