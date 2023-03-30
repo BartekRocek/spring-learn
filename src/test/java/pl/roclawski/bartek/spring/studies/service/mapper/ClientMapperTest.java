@@ -6,11 +6,16 @@ import org.modelmapper.ModelMapper;
 import pl.roclawski.bartek.spring.studies.repository.ClientEntity;
 import pl.roclawski.bartek.spring.studies.web.model.ClientModel;
 
+import java.util.List;
+
 class ClientMapperTest {
 
     public static final String CLIENT_NAME_BART = "Bart";
     public static final String CLIENT_ADDRESS_EZG = "EZG";
     public static final String CLIENT_PHONE_NUMBER_42 = "42 121212";
+    public static final String CLIENT_NAME_ANN = "Ann";
+    public static final String CLIENT_ADDRESS_WAW = "WAW";
+    public static final String CLIENT_PHONE_NUMBER_22 = "22 552255";
 
     @Test
     void fromClientModelToClientEntity() {
@@ -52,5 +57,39 @@ class ClientMapperTest {
                         "The phone number value is not " + CLIENT_PHONE_NUMBER_42)
 
         );
+    }
+
+
+    @Test
+    void transferListEntityToModelList() {
+        // given
+        ClientEntity clientEntityOne = new ClientEntity();
+        clientEntityOne.setId(2L);
+        clientEntityOne.setName(CLIENT_NAME_BART);
+        clientEntityOne.setAddress(CLIENT_ADDRESS_EZG);
+        clientEntityOne.setPhoneNumber(CLIENT_PHONE_NUMBER_42);
+
+        ClientEntity clientEntityTwo = new ClientEntity();
+        clientEntityTwo.setId(3L);
+        clientEntityTwo.setName(CLIENT_NAME_ANN);
+        clientEntityTwo.setAddress(CLIENT_ADDRESS_WAW);
+        clientEntityTwo.setPhoneNumber(CLIENT_PHONE_NUMBER_22);
+
+        List<ClientEntity> clientEntities = List.of(clientEntityOne, clientEntityTwo);
+//        ModelMapper modelMapper = new ModelMapper();
+        ClientModel clientModel = new ClientModel();
+
+        // when
+        List<ClientModel> clientModelList = clientEntities.stream()
+                .map(clientEntity.get -> clientModel)
+                .toList();
+        // then
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(clientModelList.size(), clientEntities.size(),
+                        "The lists are not of the same size"),
+                () -> Assertions.assertEquals(clientModelList.get(0).getName(), clientEntities.get(0).getName(),
+                        "The name value is not " + CLIENT_NAME_BART)
+        );
+
     }
 }

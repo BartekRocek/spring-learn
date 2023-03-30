@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 import pl.roclawski.bartek.spring.studies.repository.ClientEntity;
 import pl.roclawski.bartek.spring.studies.web.model.ClientModel;
 
+import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Component
 public class ClientMapper {
@@ -28,6 +30,17 @@ public class ClientMapper {
 
         LOGGER.info("from(...) = " + clientModel);
         return clientModel;
+
+    }
+
+    public List<ClientModel> transferListEntityToModelList(List<ClientEntity> clientEntities) {
+//    public List<ClientModel> transferListModelToEntityList(List<ClientEntity> clientEntities) {
+        // // FIXME: 28.03.2023 should the name not be transferListEntityToListEntity
+        LOGGER.info("transferListModelToListEntity(" + clientEntities + ")");
+
+        return clientEntities.stream()
+                .map(this::from)
+                .collect(Collectors.toList());
 
     }
 
