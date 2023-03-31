@@ -55,3 +55,5 @@ public class AccountController {
 //  https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html
 //  https://docs.spring.io/spring-boot/docs/3.0.4/reference/htmlsingle/#getting-started.introducing-spring-boot
 //  https://docs.spring.io/spring-framework/docs/current/reference/html/overview.html#overview
+
+// TODO: 31.03.2023 rozpropagować widok z listą kont do projektu Translation Job 
