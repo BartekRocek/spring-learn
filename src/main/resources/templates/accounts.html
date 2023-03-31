@@ -6,8 +6,30 @@
 </head>
 <body>
 <div>
-  <h1>Accounts list</h1>
-  <div><span th:text="${accounts}"></span></div>
+    <h1>Accounts list</h1>
+    <!--  <div><span th:text="${accounts}"></span></div>-->
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>DETAILS</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.id}"/>
+                <td th:text="${account.name}"/>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
