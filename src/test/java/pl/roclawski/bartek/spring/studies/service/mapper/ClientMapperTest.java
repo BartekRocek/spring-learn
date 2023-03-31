@@ -76,12 +76,12 @@ class ClientMapperTest {
         clientEntityTwo.setPhoneNumber(CLIENT_PHONE_NUMBER_22);
 
         List<ClientEntity> clientEntities = List.of(clientEntityOne, clientEntityTwo);
-//        ModelMapper modelMapper = new ModelMapper();
+        ModelMapper modelMapper = new ModelMapper();
         ClientModel clientModel = new ClientModel();
 
         // when
         List<ClientModel> clientModelList = clientEntities.stream()
-                .map(clientEntity.get -> clientModel)
+                .map(clientEntity -> modelMapper.map(clientEntity, ClientModel.class))
                 .toList();
         // then
         Assertions.assertAll(
