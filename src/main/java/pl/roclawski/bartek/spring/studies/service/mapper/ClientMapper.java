@@ -33,7 +33,7 @@ public class ClientMapper {
 
     }
 
-    public List<ClientModel> transferListEntityToModelList(List<ClientEntity> clientEntities) {
+    public List<ClientModel> transferEntityListToModelList(List<ClientEntity> clientEntities) {
 //    public List<ClientModel> transferListModelToEntityList(List<ClientEntity> clientEntities) {
         // // FIXME: 28.03.2023 should the name not be transferListEntityToListEntity
         LOGGER.info("transferListModelToListEntity(" + clientEntities + ")");

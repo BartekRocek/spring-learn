@@ -3,11 +3,14 @@ package pl.roclawski.bartek.spring.studies.service.mapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import pl.roclawski.bartek.spring.studies.repository.ClientEntity;
 import pl.roclawski.bartek.spring.studies.web.model.ClientModel;
 
 import java.util.List;
 
+@SpringBootTest
 class ClientMapperTest {
 
     public static final String CLIENT_NAME_BART = "Bart";
@@ -17,19 +20,23 @@ class ClientMapperTest {
     public static final String CLIENT_ADDRESS_WAW = "WAW";
     public static final String CLIENT_PHONE_NUMBER_22 = "22 552255";
 
+    @Autowired
+    private ClientMapper clientMapper;
+
     @Test
     void fromClientModelToClientEntity() {
         // given
         ClientModel clientModel = new ClientModel(CLIENT_NAME_BART, CLIENT_ADDRESS_EZG, CLIENT_PHONE_NUMBER_42);
-        ModelMapper modelMapper = new ModelMapper();
+//        ModelMapper modelMapper = new ModelMapper();
 
         // when
-        ClientEntity clientEntity = modelMapper.map(clientModel, ClientEntity.class);
+//        ClientEntity clientEntity = modelMapper.map(clientModel, ClientEntity.class);
+        ClientEntity clientEntity = clientMapper.from(clientModel);
 
         // then
         Assertions.assertAll(
-                () -> Assertions.assertEquals(clientModel.getName(), clientEntity.getName(), "The value is not "
-                        + clientModel.getName()),
+                () -> Assertions.assertEquals(clientModel.getName(), clientEntity.getName(), "The name values" +
+                        "are not equal"),
                 () -> Assertions.assertNotNull(clientEntity, "The clientEntity is null")
         );
     }
@@ -45,7 +52,7 @@ class ClientMapperTest {
         ModelMapper modelMapper = new ModelMapper();
 
         // when
-        ClientModel clientModel = modelMapper.map(clientEntity, ClientModel.class);
+        ClientModel clientModel = modelMapper.map(clientEntity, ClientModel.class); // FIXME: 31.03.2023 Fix this as per 1st test!
 
         // then
         Assertions.assertAll(
@@ -81,7 +88,7 @@ class ClientMapperTest {
 
         // when
         List<ClientModel> clientModelList = clientEntities.stream()
-                .map(clientEntity -> modelMapper.map(clientEntity, ClientModel.class))
+                .map(clientEntity -> modelMapper.map(clientEntity, ClientModel.class))// FIXME: 31.03.2023 Fix this as per 1st test!
                 .toList();
         // then
         Assertions.assertAll(
