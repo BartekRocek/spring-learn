@@ -24,8 +24,13 @@ public class ClientService {
 
     public List<ClientModel> list() {
         LOGGER.info("list()");
+        List<ClientEntity> clientEntities = clientRepository.findAll();
+
+        List<ClientModel> clientModels = clientMapper.transferEntityListToModelList(clientEntities); //fixme change name to
+        LOGGER.info("list() = " + clientModels);
+
         // TODO: 25.03.2023 finish this!
-        return null;
+        return clientModels;
     }
 
     public void create() {
