@@ -33,21 +33,42 @@ public class AccountController {
     }
 
     @GetMapping(value = "/create")
-    public String accountView() {
-        LOGGER.info("accountView()");
+    public String createView() {
+        LOGGER.info("createView()");
 
         return "account";
     }
 
     @PostMapping
-    public String account(AccountModel accountModel) {
-        LOGGER.info("account(" + accountModel + ")");
+    public String create(AccountModel accountModel) {
+        LOGGER.info("create(" + accountModel + ")");
 
         accountService.create(accountModel);
 
         return "account";
     }
 
+    @GetMapping(value = "/read")
+    public String readView(Long id) {
+        LOGGER.info("readView(" + id + ")");
+        AccountModel readAccountModel = accountService.read(id);
+        return "account";
+    }
+
+    //    @PostMapping
+    public String read(AccountModel accountModel) {
+        LOGGER.info("read(" + accountModel + ")");
+
+//        accountService.
+        return null;
+    }
+
+    @GetMapping(value = "/delete")
+    public String delete(Long id) {
+        LOGGER.info("delete(" + id + ")");
+        accountService.delete(id);
+        return "redirect:/accounts";
+    }
 }
 
 // TODO: 17.03.2023 Stworzyć wszystkie warstwy (controller, service, mapper i repository)

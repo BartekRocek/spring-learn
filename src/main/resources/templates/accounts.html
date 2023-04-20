@@ -23,9 +23,9 @@
             <tr th:each="account : ${accounts}">
                 <td th:text="${account.id}"/>
                 <td th:text="${account.name}"/>
+                <td><a href="/accounts/read" th:href="@{/accounts/read(id=${account.id})}">read</a></td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="/accounts/delete" th:href="@{/accounts/delete(id=${account.id})}">delete</a></td>
             </tr>
             </tbody>
         </table>

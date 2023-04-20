@@ -59,7 +59,7 @@ class AccountMapperTest {
         accountEntities.add(accountEntity);
 
         // when
-        List<AccountModel> accountModels = accountMapper.transferListModelToListEntity(accountEntities);
+        List<AccountModel> accountModels = accountMapper.fromList(accountEntities);
 
         // then
         Assertions.assertEquals(accountEntities.size(), accountModels.size(), "The lists are not of the same size");

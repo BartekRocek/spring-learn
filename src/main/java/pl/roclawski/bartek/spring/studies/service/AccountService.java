@@ -7,6 +7,7 @@ import pl.roclawski.bartek.spring.studies.service.mapper.AccountMapper;
 import pl.roclawski.bartek.spring.studies.web.model.AccountModel;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -26,7 +27,7 @@ public class AccountService {
         LOGGER.info("list()");
         List<AccountEntity> accountEntities = accountRepository.findAll();
 
-        List<AccountModel> accountModels = accountMapper.transferListModelToListEntity(accountEntities);
+        List<AccountModel> accountModels = accountMapper.fromList(accountEntities);
         LOGGER.info("list() = " + accountModels);
         return accountModels;
     }
@@ -46,6 +47,21 @@ public class AccountService {
 
         LOGGER.info("create(...) = " + mappedAccountModel);
         return mappedAccountModel;
+    }
+
+    public AccountModel read(Long id) {
+
+
+        Optional<AccountEntity> optionalAccountEntity = accountRepository.findById(id);
+        LOGGER.info("optionalAccountEntity = " + optionalAccountEntity);
+        return null; //// FIXME: 13.04.2023 ?????
+    }
+
+    public void delete(Long id) {
+        LOGGER.info("delete(" + id + ")");
+
+        accountRepository.deleteById(id);
+
     }
 }
 
