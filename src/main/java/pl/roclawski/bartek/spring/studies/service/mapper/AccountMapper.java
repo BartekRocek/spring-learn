@@ -34,13 +34,12 @@ public class AccountMapper {
         return accountModel;
     }
 
-    public List<AccountModel> transferListModelToListEntity(List<AccountEntity> accountEntities) {
-        LOGGER.info("transferListModelToListEntity(" + accountEntities + ")");
+    public List<AccountModel> fromList(List<AccountEntity> accountEntities) {
+        LOGGER.info("fromList(" + accountEntities + ")");
 
         return accountEntities.stream()
                 .map(this::from)
                 .collect(Collectors.toList());
 
     }
-
 }
