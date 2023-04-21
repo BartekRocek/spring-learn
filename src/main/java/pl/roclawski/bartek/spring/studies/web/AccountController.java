@@ -49,9 +49,11 @@ public class AccountController {
     }
 
     @GetMapping(value = "/read")
-    public String readView(Long id) {
+    public String readView(Long id, ModelMap modelMap) throws Exception {
         LOGGER.info("readView(" + id + ")");
         AccountModel readAccountModel = accountService.read(id);
+        modelMap.addAttribute("account", readAccountModel);
+
         return "account";
     }
 

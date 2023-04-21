@@ -49,12 +49,16 @@ public class AccountService {
         return mappedAccountModel;
     }
 
-    public AccountModel read(Long id) {
-
+    public AccountModel read(Long id) throws Exception {
+        LOGGER.info("read(" + id + ")");
 
         Optional<AccountEntity> optionalAccountEntity = accountRepository.findById(id);
-        LOGGER.info("optionalAccountEntity = " + optionalAccountEntity);
-        return null; //// FIXME: 13.04.2023 ?????
+        AccountEntity accountEntity = optionalAccountEntity.orElseThrow(
+                () -> new Exception("Unable to find account with id " + id));
+        AccountModel accountModel = accountMapper.from(accountEntity);
+
+        LOGGER.info("read(...) = " + accountModel);
+        return accountModel;
     }
 
     public void delete(Long id) {
