@@ -33,8 +33,9 @@ public class AccountController {
     }
 
     @GetMapping(value = "/create")
-    public String createView() {
+    public String createView(ModelMap modelMap) {
         LOGGER.info("createView()");
+        modelMap.addAttribute("account", new AccountModel());
 
         return "account";
     }

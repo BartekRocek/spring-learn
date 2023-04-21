@@ -6,16 +6,16 @@
 </head>
 <body>
 <h1>This is the account</h1>
-<div>
-    <span th:text="${account}">Doing frontend</span>
-</div>
+<!--<div>-->
+<!--    <span th:text="${account}">Doing frontend</span>-->
+<!--</div>-->
 <div>
     <span th:text="${hello}">Doing frontend</span>
 </div>
 <div>
-    <form action="/accounts" method="post">
-        <input type="text" name="name">
-        <input type="text" name="department">
+    <form action="#" th:action="@{/accounts}" th:object="${account}" method="post">
+        <input type="text" th:field="*{name}"> <!--same as ${account.name} owing to the 16 line-->
+        <input type="text" th:field="${account.department}">
         <button type="submit">submit</button>
     </form>
 </div>
